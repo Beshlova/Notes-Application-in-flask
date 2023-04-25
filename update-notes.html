@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %} update notes{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <form action="{{request.path}}" method="POST" class="form-group">
+        {{form.csrf_token}}
+        <legend class="border-bottom mb-4" align="center"> Update Notes </legend>
+        <div>
+            <h3>{{form.title.label}}</h3>
+            {{form.title(class="form-control")}}
+        </div>
+        <div>
+            <h3>{{form.content.label}}</h3>
+            {{form.content(class="form-control" ,placeholder="Update your notes...")}}
+        </div>
+        <br>
+        <div>
+            {{form.submit(class="btn btn-primary", align="center")}}
+        </div>
+    </form>
+    <br>
+    <br>
+    <h1><a href="{{url_for('views.home')}}" class="btn btn-primary">Go back</a></h1>
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}signup page{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form action="{{request.path}}" method="POST" class="form-group">
+        {{form.csrf_token}}
+        <legend class="border-bottom mb-4" align="center"> Register </legend>
+        <div>
+            {{form.username.label}}
+            {{form.username(class="form-control",placeholder='Enter username')}}
+        </div>
+        <div>
+            {{form.email.label}}
+            {{form.email(class="form-control",placeholder='Enter email')}}
+        </div>
+        <div>
+            {{form.password.label}}
+            {{form.password(class="form-control",placeholder="Enter password")}}
+        </div>
+        <div>
+            {{form.confirm_password.label}}
+            {{form.confirm_password(class="form-control",placeholder='Confirm password')}}
+        </div>
+        <br>
+        <div>
+            {{form.submit(class='btn btn-primary', align='center')}}
+        </div>
+        <br>
+        <div>
+            <p>
+                Already have an account? <a href="{{url_for('auth.login')}}">Login</a>
+            </p>
+        </div>
+    </form>
+</div>
+{% endblock %}
